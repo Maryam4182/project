@@ -3,12 +3,15 @@ import { Env } from "../config";
 
 // Use Railway's DATABASE_URL if available, otherwise construct connection string
 const getDatabaseUrl = () => {
-    if (Env.DATABASE_URL) {
+    /*if (Env.DATABASE_URL) {
         return Env.DATABASE_URL;
     }
+        */
     
     // Fallback for local development
     return `postgres://${Env.db_user}:${Env.db_password}@${Env.db_host}:${Env.db_port}/${Env.db_name}`;
+
+
 };
 
 export const sequelize = new Sequelize(getDatabaseUrl(), {
